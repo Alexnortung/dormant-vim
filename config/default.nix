@@ -1,5 +1,7 @@
 {
   imports = [
+    ./coding
     ./ui
+    ./util
   ];
 }

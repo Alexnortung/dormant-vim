@@ -1,6 +1,7 @@
 { lib, config, ... }:
 let
   cfg = config.${lib.name}.bufferlines.bufferline;
+  mkRaw = lib.nixvim.mkRaw;
 in
 {
   options.${lib.name}.bufferlines.bufferline = {
@@ -22,12 +23,23 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    ${lib.name}.snacks.enable = true;
+
     plugins.web-devicons = {
       enable = true;
     };
 
     plugins.bufferline = {
       enable = true;
+
+      settings = {
+        options = {
+          close_command = mkRaw "function(n) Snacks.bufdelete(n) end";
+          right_mouse_command = mkRaw "function(n) Snacks.bufdelete(n) end";
+          diagnostics = "nvim_lsp";
+          # TODO: Add diagnostics indicator
+        };
+      };
     };
 
     keymaps =
@@ -161,6 +173,15 @@ in
             action = "<cmd>BufferLineMoveNext<CR>";
             options = {
               desc = "Move buffer next";
+            };
+          }
+          # TODO: Maybe move this to a different file
+          {
+            mode = "n";
+            key = "<A-w>";
+            action = "<cmd>lua Snacks.bufdelete(n)<CR>";
+            options = {
+              desc = "Close current buffer";
             };
           }
         ];
