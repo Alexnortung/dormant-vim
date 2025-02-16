@@ -1,0 +1,4 @@
+lib:
+{
+  name = "dormant-vim";
+}
