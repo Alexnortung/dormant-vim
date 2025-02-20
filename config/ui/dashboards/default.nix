@@ -1,18 +1,18 @@
 { lib, config, ... }:
 
 let
-  cfg = config.${lib.name}.dashboards;
+  cfg = config.${lib.name}.ui.dashboards;
 in
 {
   imports = [
     ./snacks.nix
   ];
 
-  options.${lib.name}.dashboards = {
+  options.${lib.name}.ui.dashboards = {
     enable = lib.mkEnableOption "Enable dashboards";
   };
 
   config = lib.mkIf cfg.enable {
-    ${lib.name}.dashboards.snacks.enable = true;
+    ${lib.name}.ui.dashboards.snacks.enable = lib.mkDefault true;
   };
 }

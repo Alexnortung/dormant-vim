@@ -14,6 +14,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    ${lib.name}.coding.extra.autopairs.enable = lib.mkDefault true;
+    ${lib.name}.coding.extra = {
+      autopairs.enable = lib.mkDefault true;
+      ts-comments.enable = lib.mkDefault true;
+    };
   };
 }

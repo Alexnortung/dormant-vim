@@ -1,10 +1,13 @@
 { lib, config, ... }:
 let
-  cfg = config.${lib.name}.bufferlines.bufferline;
+  cfg = config.${lib.name}.ui.bufferlines.bufferline;
+  # afterLeader = cfg.keymaps.afterLeader;
+  afterLeader = "b";
   mkRaw = lib.nixvim.mkRaw;
+  mkDefault = lib.mkDefault;
 in
 {
-  options.${lib.name}.bufferlines.bufferline = {
+  options.${lib.name}.ui.bufferlines.bufferline = {
     enable = lib.mkEnableOption "Enable bufferline";
 
     keymaps = {
@@ -14,11 +17,11 @@ in
         description = "Enable default keymaps";
       };
 
-      afterLeader = lib.mkOption {
-        type = lib.types.str;
-        default = "b";
-        description = "The key after the leader key to trigger the bufferline keymaps";
-      };
+      # afterLeader = lib.mkOption {
+      #   type = lib.types.str;
+      #   default = "b";
+      #   description = "The key after the leader key to trigger the bufferline keymaps";
+      # };
     };
   };
 
@@ -34,9 +37,9 @@ in
 
       settings = {
         options = {
-          close_command = mkRaw "function(n) Snacks.bufdelete(n) end";
-          right_mouse_command = mkRaw "function(n) Snacks.bufdelete(n) end";
-          diagnostics = "nvim_lsp";
+          close_command = mkDefault (mkRaw "function(n) Snacks.bufdelete(n) end");
+          right_mouse_command = mkDefault (mkRaw "function(n) Snacks.bufdelete(n) end");
+          diagnostics = mkDefault "nvim_lsp";
           # TODO: Add diagnostics indicator
         };
       };
@@ -44,7 +47,7 @@ in
 
     keymaps =
       let
-        leader = "<leader>${cfg.keymaps.afterLeader}";
+        leader = "<leader>${afterLeader}";
         # Lazyvim Keymaps
         # Key	Description	Mode
         # <leader>bl	Delete Buffers to the Left	n

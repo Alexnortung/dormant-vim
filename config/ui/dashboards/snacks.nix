@@ -1,10 +1,10 @@
 { lib, config, ... }:
 
 let
-  cfg = config.${lib.name}.dashboards.snacks;
+  cfg = config.${lib.name}.ui.dashboards.snacks;
 in
 {
-  options.${lib.name}.dashboards.snacks = {
+  options.${lib.name}.ui.dashboards.snacks = {
     enable = lib.mkEnableOption "Enable Snacks dashboard";
   };
 
