@@ -95,9 +95,9 @@ in
           yamlls = {
             enable = mkDefault true;
           };
-          eslint = {
-            enable = mkDefault true;
-          };
+          # eslint = {
+          #   enable = mkDefault true;
+          # };
           biome = {
             enable = mkDefault true;
           };

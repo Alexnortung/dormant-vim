@@ -6,6 +6,7 @@ in
 {
   imports = [
     ./coding
+    ./editor
     ./ui
     ./util
   ];
@@ -22,6 +23,7 @@ in
   config = lib.mkIf cfg.enable {
     ${lib.name} = {
       coding.enable = lib.mkDefault true;
+      editor.enable = lib.mkDefault true;
       ui.enable = lib.mkDefault true;
     };
   };
