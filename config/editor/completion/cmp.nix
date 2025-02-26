@@ -10,7 +10,7 @@ in
 
   config =
     let
-      luasnipEnabled = false;
+      luasnipEnabled = config.plugins.luasnip.enable;
     in
     lib.mkIf cfg.enable {
       plugins.lspkind = {

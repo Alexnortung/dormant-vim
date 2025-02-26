@@ -7,6 +7,7 @@ in
   imports = [
     ./coding
     ./editor
+    ./treesitter
     ./ui
     ./util
   ];
@@ -24,6 +25,7 @@ in
     ${lib.name} = {
       coding.enable = lib.mkDefault true;
       editor.enable = lib.mkDefault true;
+      treesitter.enable = lib.mkDefault true;
       ui.enable = lib.mkDefault true;
     };
   };

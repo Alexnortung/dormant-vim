@@ -5,7 +5,7 @@ let
 in
 {
   imports = [
-    ./completion/cmp.nix
+    ./completion
   ];
 
   options.${lib.name}.editor = {
@@ -13,6 +13,6 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    ${lib.name}.editor.completion.cmp.enable = lib.mkDefault true;
+    ${lib.name}.editor.completion.enable = lib.mkDefault true;
   };
 }
