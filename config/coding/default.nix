@@ -4,7 +4,10 @@ let
 in
 {
   imports = [
+    ./commenting
     ./extra
+    ./formatting
+    ./linting
     ./lsp
   ];
 
@@ -14,7 +17,10 @@ in
 
   config = lib.mkIf cfg.enable {
     ${lib.name}.coding = {
+      commenting.enable = lib.mkDefault true;
       extra.enable = lib.mkDefault true;
+      formatting.enable = lib.mkDefault true;
+      linting.enable = lib.mkDefault true;
       lsp-nvim.enable = lib.mkDefault true;
     };
   };

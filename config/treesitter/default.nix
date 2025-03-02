@@ -12,35 +12,19 @@ in
     plugins.treesitter = {
       enable = true;
       nixGrammars = true;
-      # settings = {
-      #   auto_install = true;
-      #   ensure_installed = [
-      #     "bash"
-      #     "c"
-      #     "diff"
-      #     "html"
-      #     "javascript"
-      #     "jsdoc"
-      #     "json"
-      #     "jsonc"
-      #     "lua"
-      #     "luadoc"
-      #     "luap"
-      #     "markdown"
-      #     "markdown_inline"
-      #     "printf"
-      #     "python"
-      #     "query"
-      #     "regex"
-      #     "toml"
-      #     "tsx"
-      #     "typescript"
-      #     "vim"
-      #     "vimdoc"
-      #     "xml"
-      #     "yaml"
-      #   ];
-      # };
+      settings = {
+        highlight = {
+          enable = lib.mkDefault true;
+        };
+        indent = {
+          enable = lib.mkDefault true;
+        };
+      };
+    };
+
+    # TODO: Move this?
+    plugins.ts-autotag = {
+      enable = lib.mkDefault true;
     };
   };
 }

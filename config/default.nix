@@ -10,6 +10,8 @@ in
     ./treesitter
     ./ui
     ./util
+
+    ./options.nix
   ];
 
   options.${lib.name} = {
@@ -27,6 +29,7 @@ in
       editor.enable = lib.mkDefault true;
       treesitter.enable = lib.mkDefault true;
       ui.enable = lib.mkDefault true;
+      options.enable = lib.mkDefault true;
     };
   };
 }
