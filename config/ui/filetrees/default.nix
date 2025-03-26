@@ -46,7 +46,7 @@ in
       {
         mode = "n";
         key = "<leader>fe";
-        action = "<cmd>Neotree toggle<cr>";
+        action = "<cmd>Neotree toggle position=righte<cr>";
         options = {
           desc = "Toggle Neotree";
           silent = true;

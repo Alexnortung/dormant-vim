@@ -9,6 +9,7 @@ in
     ./git
 
     ./leap.nix
+    ./telescope.nix
     ./which-key.nix
   ];
 
@@ -21,6 +22,7 @@ in
       completion.enable = lib.mkDefault true;
       git.enable = lib.mkDefault true;
       leap.enable = lib.mkDefault true;
+      telescope.enable = lib.mkDefault true;
       which-key.enable = lib.mkDefault true;
     };
   };
